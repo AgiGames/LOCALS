@@ -31,7 +31,7 @@ Contains dataset, models and implementation source code of LOCALS.
 
 - **Recall, Precision, F1-Score**
 
-  ![Recall, Precision, F1-Score](https://github.com/AgiGames/LOCALS/blob/main/LOCALS-Single/recall-precision-f1score.png, "Recall, Precision, F1-Score")
+  ![Recall, Precision, F1-Score](https://github.com/AgiGames/LOCALS/blob/main/LOCALS-Single/recall-precision-f1score.png "Recall, Precision, F1-Score")
 
 - **mCP Value**
   
