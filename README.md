@@ -21,4 +21,4 @@ Contains dataset, models and implementation source code of LOCALS
 
 ## LOCALS-Single Results:
 
-- ![Training Loss Curve](https://github.com/AgiGames/LOCALS/blob/main/LOCALS-Single/smoothed_training_loss.png)
+![Training Loss Curve](https://github.com/AgiGames/LOCALS/blob/main/LOCALS-Single/smoothed_training_loss.png "Training Loss Curve")
