@@ -22,10 +22,13 @@ Contains dataset, models and implementation source code of LOCALS
 ## LOCALS-Single Results:
 
 - **Training Loss Curve**
+  
   ![Training Loss Curve](https://github.com/AgiGames/LOCALS/blob/main/LOCALS-Single/smoothed_training_loss.png "Training Loss Curve")
 
 - **Test Results**
+  
   ![Test Results](https://github.com/AgiGames/LOCALS/blob/main/LOCALS-Single/test_results.png "Test Results")
 
 - **mCP Value**
+  
   ``` 87.5% ```
