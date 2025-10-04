@@ -1,5 +1,5 @@
 # LOCALS
-Contains dataset, models and implementation source code of LOCALS
+Contains dataset, models and implementation source code of LOCALS.
 
 ## How to run code:
 - Step 1: Make sure you have a conda pytorch gpu environment (look up setup videos on youtube). 
