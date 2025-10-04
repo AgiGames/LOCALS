@@ -29,6 +29,10 @@ Contains dataset, models and implementation source code of LOCALS
   
   ![Test Results](https://github.com/AgiGames/LOCALS/blob/main/LOCALS-Single/test_results.png "Test Results")
 
+- **Recall, Precision, F1-Score**
+
+  ![Recall, Precision, F1-Score](https://github.com/AgiGames/LOCALS/blob/main/LOCALS-Single/recall-precision-f1score.png, "Recall, Precision, F1-Score")
+
 - **mCP Value**
   
   ``` 87.5% ```
