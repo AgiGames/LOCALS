@@ -1,7 +1,7 @@
 # LOCALS
 Contains dataset, models and implementation source code of LOCALS
 
-### How to run code:
+## How to run code:
 - Step 1: Make sure you have a conda pytorch gpu environment (look up setup videos on youtube). 
 - Step 2: Make sure the following versions of python / python libraries are installed.
   - Python 3.10.18
@@ -13,8 +13,8 @@ Contains dataset, models and implementation source code of LOCALS
 - Step 4: Download source code, necessary models and datasets needed for running (linked in *models* and *datasets* section).
 - Step 5: Run code using by launching JupyterLab and pressing the run button.
 
-### Models:
-- [LOCALS-Single](https://www.kaggle.com/models/agilesharumugam/locals-single)
-
-### Datasets:
-- [LOCALS-Single](https://www.kaggle.com/datasets/agilesharumugam/locals-single-pkl-dataset)
+  ## Models:
+  - [LOCALS-Single](https://www.kaggle.com/models/agilesharumugam/locals-single)
+  
+  ## Datasets:
+  - [LOCALS-Single](https://www.kaggle.com/datasets/agilesharumugam/locals-single-pkl-dataset)
