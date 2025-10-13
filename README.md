@@ -41,3 +41,5 @@ Contains dataset, models and implementation source code of LOCALS.
 - **mAP Value**
   
   ``` 88.43% ```
+
+> Personal use only, citation required for public use.
