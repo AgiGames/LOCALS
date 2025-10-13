@@ -1,4 +1,4 @@
-# LOCALS - Long Object Correlation Based Analysis and Localization System
+# LOCALS - Long Object Correlation-based Analysis and Localization System
 Contains dataset, models and implementation source code of LOCALS.
 
 ## How to run code:
