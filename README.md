@@ -19,6 +19,9 @@ Contains dataset, models and implementation source code of LOCALS.
   ## Datasets:
   - [LOCALS-Single](https://www.kaggle.com/datasets/agilesharumugam/locals-single-pkl-dataset)
 
+  ## Paper Model and Dataset:
+  - [LOCALS-Single](https://zenodo.org/records/17832551)
+
 ## LOCALS-Single Results:
 
 - **Training Loss Curve**
