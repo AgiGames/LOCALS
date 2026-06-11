@@ -1,0 +1,1 @@
+{"seed": 1791, "run_id": "2d3b166e-0bd0-49cd-b122-35244f10d989", "train_split": 0.7, "test_split": 0.15000000000000002, "classification_performance": {"recall": 0.9532019704433498, "precision": 0.9555555555555556, "f1_score": 0.9543773119605425}, "overall_performance": {"mean_average_precision": 0.9476243671635085, "mean_correlation_score": 0.9237498325834974}}
