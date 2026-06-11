@@ -20,7 +20,7 @@ Contains dataset, models and implementation source code of LOCALS.
   - [Traced Pencils](https://www.kaggle.com/datasets/agilesharumugam/traced-pencils)
 
   ## Paper Model and Dataset:
-  - [LOCALS-Single](https://zenodo.org/records/17832551)
+  - [LOCALS](https://zenodo.org/records/20646155)
 
 ## LOCALS-Single Results:
 
