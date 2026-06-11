@@ -26,23 +26,23 @@ Contains dataset, models and implementation source code of LOCALS.
 
 - **Training Loss Curve**
   
-  ![Training Loss Curve](https://github.com/AgiGames/LOCALS/blob/main/LOCALS-Single/smoothed_training_loss.png "Training Loss Curve")
+  ![Training Loss Curve](https://github.com/AgiGames/LOCALS/blob/main/LOCALS-Pencils/figures/smoothed_training_loss.png "Training Loss Curve")
 
 - **Test Results**
   
-  ![Test Results](https://github.com/AgiGames/LOCALS/blob/main/LOCALS-Single/test_results.png "Test Results")
+  ![Test Results](https://github.com/AgiGames/LOCALS/blob/main/LOCALS-Pencils/figures/visualised_predictions.png "Test Results")
 
 - **Recall, Precision, F1-Score**
 
-  ![Recall, Precision, F1-Score](https://github.com/AgiGames/LOCALS/blob/main/LOCALS-Single/recall-precision-f1score.png "Recall, Precision, F1-Score")
+  ![Recall, Precision, F1-Score](https://github.com/AgiGames/LOCALS/blob/main/LOCALS-Pencils/figures/recall-precision-f1score.png "Recall, Precision, F1-Score")
 
 - **mCS Value**
   
-  ``` 89.85% ```
+  ``` 93.8% ```
 
 
 - **mAP Value**
   
-  ``` 88.43% ```
+  ``` 94.8% ```
 
 > Personal use only, citation required for public use.
