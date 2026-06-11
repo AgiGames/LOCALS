@@ -14,10 +14,10 @@ Contains dataset, models and implementation source code of LOCALS.
 - Step 5: Run code using by launching JupyterLab and pressing the run button.
 
   ## Models:
-  - [LOCALS-Single](https://www.kaggle.com/models/agilesharumugam/locals-single)
+  - [LOCALS](https://www.kaggle.com/models/agilesharumugam/locals/)
   
   ## Datasets:
-  - [LOCALS-Pencils](https://www.kaggle.com/datasets/agilesharumugam/traced-pencils)
+  - [Traced Pencils](https://www.kaggle.com/datasets/agilesharumugam/traced-pencils)
 
   ## Paper Model and Dataset:
   - [LOCALS-Single](https://zenodo.org/records/17832551)
