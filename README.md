@@ -17,7 +17,7 @@ Contains dataset, models and implementation source code of LOCALS.
   - [LOCALS-Single](https://www.kaggle.com/models/agilesharumugam/locals-single)
   
   ## Datasets:
-  - [LOCALS-Single](https://www.kaggle.com/datasets/agilesharumugam/locals-single-pkl-dataset)
+  - [LOCALS-Pencils](https://www.kaggle.com/datasets/agilesharumugam/traced-pencils)
 
   ## Paper Model and Dataset:
   - [LOCALS-Single](https://zenodo.org/records/17832551)
