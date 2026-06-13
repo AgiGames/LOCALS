@@ -1,0 +1,1 @@
+NUM_GRID_CELLS = 7
