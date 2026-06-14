@@ -4,8 +4,8 @@ model = LOCALS('n', 'evaluation_model.pth')
 dataset = LOCALSDataset('dataset/images', 'dataset/labels')
 train_loader, test_loader, val_loader = dataset.get_dataloaders(train_split=0.9, test_split=0.1)
 
-visualise_dataset(train_loader, 8)
-visualise_predictions(model, test_loader, 8)
+# visualise_dataset(train_loader, 8)
+# visualise_predictions(model, test_loader, 8)
 
 metrics = model.evaluate(test_loader)
 print(f"Recall: {metrics['recall']}")

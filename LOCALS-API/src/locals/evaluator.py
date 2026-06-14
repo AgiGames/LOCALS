@@ -5,7 +5,7 @@ from torch.utils.data import DataLoader
 from .math import pearson_corr
 from .constants import NUM_GRID_CELLS
 
-def find_recall_precision_f1_score(model, data, threshold=0.5, num_batches=100):
+def find_recall_precision_f1_score(model, data, class_threshold=0.5, dist_threshold=0.6):
     if not isinstance(data, DataLoader):
         data = DataLoader(
             data,
@@ -14,38 +14,70 @@ def find_recall_precision_f1_score(model, data, threshold=0.5, num_batches=100):
         )
     model.eval()
     
-    true_positives = 0
-    false_positives = 0
+    all_detections = []
     false_negatives = 0
     
-    with torch.no_grad():
-        for batch_idx, (images, labels) in enumerate(data):
-            if batch_idx >= num_batches:
-                break
+    for batched_images, batched_labels in data:
+        batched_images = batched_images.to(model.device)
+        batched_predictions = model(batched_images).detach().cpu()
+        batch_size = batched_images.shape[0]
+        
+        for b in range(batch_size):
+            predictions = batched_predictions[b]
+            labels = batched_labels[b]
             
-            images_tensor = images.to(model.device)
-            predictions_batch = model(images_tensor) # [B, 7, 7, 3]
-            batch_size = images_tensor.shape[0]
+            predictions = predictions.reshape(-1, predictions.shape[-1])
+            trues = labels.reshape(-1, labels.shape[-1])
+            taken_trues = [False] * trues.shape[0]
+
+            indices = torch.arange(predictions.shape[0])
+            order = predictions[:, -1].argsort(descending=True)
+            predictions = predictions[order]
+            indices = indices[order]
             
-            for i in range(batch_size):
-                prediction = predictions_batch[i]
-                prediction = prediction.cpu().numpy()
+            for i in range(predictions.shape[0]):
+                pred_xnb, pred_ynb, pred_conf = predictions[i]
+                cell_idx = indices[i]
+                row = cell_idx // NUM_GRID_CELLS
+                col = cell_idx % NUM_GRID_CELLS
+                pred_x = ((col / NUM_GRID_CELLS) + (pred_xnb * (1 / NUM_GRID_CELLS)))
+                pred_y = ((row / NUM_GRID_CELLS) + (pred_ynb * (1 / NUM_GRID_CELLS)))
                 
-                label = labels[i]
-                label_numpy = label.cpu().numpy()
-                
-                # compare predictions vs labels
-                for j in range(7):
-                    for k in range(7):
-                        pred_obj = prediction[j, k, -1]
-                        label_obj = label_numpy[j, k, -1]
+                if pred_conf >= class_threshold:
+                    closest_idx = -1
+                    closest_distance = torch.inf
+                    for j in range(trues.shape[0]):
+                        true_xnb, true_ynb, true_conf = trues[j]
+                        row = j // NUM_GRID_CELLS
+                        col = j % NUM_GRID_CELLS
+                        true_x = ((col / NUM_GRID_CELLS) + (true_xnb * (1 / NUM_GRID_CELLS)))
+                        true_y = ((row / NUM_GRID_CELLS) + (true_ynb * (1 / NUM_GRID_CELLS)))
                         
-                        if pred_obj > threshold and label_obj > 0:
-                            true_positives += 1
-                        elif pred_obj > threshold and label_obj == 0:
-                            false_positives += 1
-                        elif pred_obj <= threshold and label_obj > 0:
-                            false_negatives += 1
+                        if true_conf >= 0.5:
+                            pred_coord = torch.tensor([pred_x, pred_y])
+                            true_coord = torch.tensor([true_x, true_y])
+            
+                            dist = torch.sqrt(torch.sum((pred_coord - true_coord) ** 2, dim=-1))
+                            if dist < closest_distance:
+                                closest_distance = dist
+                                closest_idx = j
+                    
+                    dist_conf = 1 - torch.sigmoid(69 * (closest_distance - 0.1))
+                    if closest_idx != -1 and not taken_trues[closest_idx] and dist_conf >= dist_threshold:
+                        taken_trues[closest_idx] = True
+                        all_detections.append((pred_conf.item(), 1, 0))
+                    else:
+                        all_detections.append((pred_conf.item(), 0, 1))
+                        
+            for i, taken in enumerate(taken_trues):
+                if trues[i][2] >= 0.5 and not taken:
+                    false_negatives += 1
+
+    TP = [d[1] for d in all_detections]
+    FP = [d[2] for d in all_detections]
+    
+    true_positives = np.sum(TP)
+    false_positives = np.sum(FP)
     
     recall = true_positives / (true_positives + false_negatives) if (true_positives + false_negatives) > 0 else 0
     precision = true_positives / (true_positives + false_positives) if (true_positives + false_positives) > 0 else 0
