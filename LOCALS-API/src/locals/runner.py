@@ -9,6 +9,19 @@ import uuid
 from .locals import LOCALS
 from .dataset import LOCALSDataset
 
+def seeder(seed: int):
+    # NumPy
+    np.random.seed(seed)
+
+    # PyTorch
+    torch.manual_seed(seed)
+    if torch.cuda.is_available():
+        torch.cuda.manual_seed(seed)
+        torch.cuda.manual_seed_all(seed)  # for multi-GPU
+        
+        torch.backends.cudnn.deterministic = True
+        torch.backends.cudnn.benchmark = False
+
 def save_run_metrics(run_details: dict):
     os.makedirs('runs', exist_ok=True)
     
@@ -26,17 +39,7 @@ def run(*, seed: int,
         num_epochs=50,
         epoch_to_lr={}):
     
-    # NumPy
-    np.random.seed(seed)
-
-    # PyTorch
-    torch.manual_seed(seed)
-    if torch.cuda.is_available():
-        torch.cuda.manual_seed(seed)
-        torch.cuda.manual_seed_all(seed)  # for multi-GPU
-        
-        torch.backends.cudnn.deterministic = True
-        torch.backends.cudnn.benchmark = False
+    seeder(seed)
     
     dataset = LOCALSDataset(images_dir, labels_dir)
     train_loader, test_loader, val_loader = dataset.get_dataloaders(train_split, test_split)

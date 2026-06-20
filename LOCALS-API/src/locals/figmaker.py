@@ -1,5 +1,6 @@
 import torch
 import matplotlib.pyplot as plt
+from matplotlib.lines import Line2D
 from torch.utils.data import DataLoader
 
 import os
@@ -19,9 +20,9 @@ def save_loss_fig(train_loss_ot: list, val_loss_ot: list):
     # plot the smoothed losses
     epochs = range(1, len(train_loss_ot) + 1)
     plt.figure(figsize=(10, 6), dpi=300)
-    plt.plot(epochs, smooth_train_loss, color='blue', linewidth=2)
+    plt.plot(epochs, smooth_train_loss, color='blue', linewidth=2, label='Train Loss')
     if val_loss_ot:
-        plt.plot(epochs, smooth_val_loss, color='red', linewidth=2)
+        plt.plot(epochs, smooth_val_loss, color='red', linewidth=2, label='Validation Loss')
     plt.title(r'Smoothed Training Loss Over Epochs', fontsize=14)
     plt.xlabel(r'Epoch', fontsize=12)
     plt.ylabel(r'Loss', fontsize=12)
@@ -29,9 +30,12 @@ def save_loss_fig(train_loss_ot: list, val_loss_ot: list):
     plt.xticks(fontsize=10)
     plt.yticks(fontsize=10)
     plt.tight_layout()
+    plt.legend()
     plt.savefig("figures/smoothed_training_loss.png", dpi=300)
     
 def visualise_dataset(data, num_images, plot_title=None):
+    os.makedirs('figures', exist_ok=True)
+    
     if not isinstance(data, DataLoader):
         data = DataLoader(
             data,
@@ -93,6 +97,8 @@ def visualise_dataset(data, num_images, plot_title=None):
     plt.show()
     
 def visualise_predictions(model, data, num_images, plot_title=None):
+    os.makedirs('figures', exist_ok=True)
+    
     if not isinstance(data, DataLoader):
         data = DataLoader(
             data,
@@ -193,11 +199,27 @@ def visualise_predictions(model, data, num_images, plot_title=None):
                 
         
         fig.tight_layout(rect=[0, 0, 1, 0.95])
+        legend_elements = [
+            Line2D([0], [0], marker='x', color='yellow',
+                linestyle='None', markersize=8, label='Ground Truth'),
+            Line2D([0], [0], marker='x', color='red',
+                linestyle='None', markersize=8, label='Prediction')
+        ]
+
+        fig.legend(
+            handles=legend_elements,
+            loc='lower left',
+            ncol=2,
+            bbox_to_anchor=(0.0, 0.0)
+        )
+        
         plt.savefig(f"figures/visualised_predictions_{plot_title.lower().replace(' ', '_')}.png", dpi=300, bbox_inches='tight') if plot_title else \
-            plt.savefig(f'figures/visualised_predictions.png')
+            plt.savefig(f'figures/visualised_predictions.png', dpi=300, bbox_inches='tight')
         plt.show()
         
 def save_recall_precision_f1_score(recall, precision, f1_score):
+    os.makedirs('figures', exist_ok=True)
+    
     metrics = ['Recall', 'Precision', 'F1 Score']
     values = [recall, precision, f1_score]
 

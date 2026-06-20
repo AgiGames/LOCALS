@@ -1,2 +1,0 @@
-train_split,test_split,val_split,seed,recall,precision,f1_score,mean_average_precision,mean_correlation_score
-0.800 ± 0.089,0.100 ± 0.045,0.100 ± 0.045,1540.000 ± 2148.845,0.957 ± 0.015,0.955 ± 0.022,0.956 ± 0.017,0.948 ± 0.016,0.938 ± 0.030

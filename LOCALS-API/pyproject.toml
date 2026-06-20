@@ -4,13 +4,14 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "locals-api"
-version = "0.1.1"
+version = "0.1.4"
 requires-python = ">=3.10"
 
 dependencies = [
     "numpy",
     "opencv-python",
     "matplotlib",
+    "pandas",
 ]
 
 [tool.setuptools]

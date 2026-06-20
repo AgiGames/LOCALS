@@ -1,5 +1,7 @@
 import torch
+import pandas as pd
 from torch.utils.data import DataLoader
+from torch.utils.flop_counter import FlopCounterMode
 
 from .trainer import train
 from .architectures import LOCALSn, LOCALSs
@@ -39,8 +41,10 @@ class LOCALS:
             
         if do_save_fig:
             save_recall_precision_f1_score(recall, precision, f1_score)
-            
-        return {'recall': recall, 'precision': precision, 'f1_score': f1_score, 'mAP': mAP, 'mCS': mCS}
+        
+        metrics_dataframe = pd.Series({'recall': recall, 'precision': precision, 'f1_score': f1_score, 'mAP': mAP, 'mCS': mCS})
+        print(metrics_dataframe)
+        return metrics_dataframe
     
     def get_num_params(self):
         num_params = sum(
@@ -48,3 +52,14 @@ class LOCALS:
             for p in self.model.parameters()
         )
         return num_params 
+    
+    def get_num_flops(self, display=False):
+        self.eval()
+        
+        flop_counter = FlopCounterMode(display=display)
+        dummy_tens = torch.rand(1, 3, 448, 448, device=self.device)
+        
+        with flop_counter:
+            self.model(dummy_tens)
+            
+        return flop_counter.get_total_flops()
