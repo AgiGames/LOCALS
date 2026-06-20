@@ -1,4 +1,4 @@
-# LOCALS
+# LOCALS-API
 
 Rapid experimentation framework for the LOCALS detector.
 
