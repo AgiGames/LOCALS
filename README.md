@@ -22,7 +22,7 @@ Contains dataset, models and implementation source code of LOCALS.
   ## Paper Model and Dataset:
   - [LOCALS](https://zenodo.org/records/20646155)
 
-## LOCALS-Single Results:
+## LOCALS Results:
 
 - **Training Loss Curve**
   
@@ -36,13 +36,8 @@ Contains dataset, models and implementation source code of LOCALS.
 
   ![Recall, Precision, F1-Score](https://github.com/AgiGames/LOCALS/blob/main/figures/recall-precision-f1score.png "Recall, Precision, F1-Score")
 
-- **mCS Value**
-  
-  ``` 93.8% ```
-
-
-- **mAP Value**
-  
-  ``` 94.8% ```
+| Recall          | Precision       | F1 Score        | mAP             | mCS             |
+|-----------------|-----------------|-----------------|-----------------|-----------------|
+| 0.9488 ± 0.0093 | 0.9441 ± 0.0293 | 0.9461 ± 0.0130 | 0.9354 ± 0.0125 | 0.9313 ± 0.0392 |
 
 > Personal use only, citation required for public use.
