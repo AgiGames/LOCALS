@@ -37,4 +37,5 @@ Contains dataset, models and implementation source code of LOCALS.
 |-----------------|-----------------|-----------------|-----------------|-----------------|
 | 0.9488 ± 0.0093 | 0.9441 ± 0.0293 | 0.9461 ± 0.0130 | 0.9354 ± 0.0125 | 0.9313 ± 0.0392 |
 
+---
 > Personal use only, citation required for public use.
