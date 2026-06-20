@@ -4,7 +4,7 @@ Rapid experimentation framework for the LOCALS detector.
 
 ## Installation
 
-Install PyTorch according to your CUDA version.
+Make the PyTorch GPU Environment (preferrably using Anaconda).
 
 Then:
 
