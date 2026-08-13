@@ -13,6 +13,7 @@ Contains dataset, models and implementation source code of LOCALS.
   
   ## Datasets:
   - [Traced Pencils](https://www.kaggle.com/datasets/agilesharumugam/traced-pencils)
+  - [Rivers](https://www.kaggle.com/datasets/ankit1743/skyview-an-aerial-landscape-dataset)
 
   ## Paper Model and Dataset:
   - [LOCALS](https://zenodo.org/records/20646155)
